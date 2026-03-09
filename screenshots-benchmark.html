@@ -1,0 +1,1916 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Screenshots · Flujos de Originación de Crédito Personal</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+    background: #F2EDE8;
+    background-image: radial-gradient(#ccc8c3 1px, transparent 1px);
+    background-size: 22px 22px;
+    padding: 40px;
+    color: #1A1A1A;
+  }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    max-width: 1400px;
+    margin: 0 auto 40px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .header-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: #888; margin-bottom: 6px;
+  }
+  .header-title {
+    font-size: 30px; font-weight: 800; letter-spacing: -0.5px;
+  }
+  .header-sub {
+    font-size: 14px; color: #666; margin-top: 4px;
+  }
+  .legend {
+    display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
+    margin-top: 8px;
+  }
+  .legend-item {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 12px; color: #555;
+    background: white; border: 1px solid #E0DBD5;
+    border-radius: 99px; padding: 4px 10px;
+  }
+  .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+  /* ── SECTION ── */
+  .section {
+    max-width: 1400px;
+    margin: 0 auto 48px;
+  }
+  .section-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: #888;
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 20px;
+  }
+  .section-label::after {
+    content: ''; flex: 1; height: 1px; background: #D4CEC8;
+  }
+
+  /* ── FINTECH BLOCK ── */
+  .fintech-block {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04);
+  }
+
+  .block-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-bottom: 1px solid #F0EBE6;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .block-header-left { display: flex; align-items: center; gap: 14px; }
+  .company-logo {
+    width: 48px; height: 48px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 800; flex-shrink: 0;
+  }
+  .company-name { font-size: 18px; font-weight: 700; }
+  .company-sub { font-size: 12px; color: #888; margin-top: 2px; }
+  .region-tag {
+    padding: 4px 12px; border-radius: 99px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* ── SCREENSHOTS STRIP ── */
+  .screenshots-row {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    padding: 24px;
+    background: #FAFAF8;
+    align-items: flex-start;
+  }
+
+  .screen-item {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-right: 20px;
+  }
+
+  /* phone frame */
+  .phone-frame {
+    position: relative;
+    width: 160px;
+    background: #1A1A1A;
+    border-radius: 28px;
+    padding: 10px 6px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  }
+  .phone-frame::before {
+    content: '';
+    position: absolute;
+    top: 10px; left: 50%;
+    transform: translateX(-50%);
+    width: 40px; height: 4px;
+    background: #333;
+    border-radius: 99px;
+    z-index: 2;
+  }
+  .phone-screen {
+    width: 100%;
+    height: 321px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .phone-screen img {
+    width: 100%;
+    height: 321px;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    border-radius: 20px;
+  }
+
+  /* step label */
+  .step-label {
+    margin-top: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #555;
+    text-align: center;
+    max-width: 130px;
+    line-height: 1.3;
+  }
+  .step-num {
+    width: 20px; height: 20px; border-radius: 50%;
+    background: #1A1A1A; color: white;
+    font-size: 10px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 4px;
+  }
+
+  /* arrow between screens */
+  .screen-arrow {
+    align-self: center;
+    margin: 0 -4px 40px;
+    font-size: 18px;
+    color: #CCC;
+    flex-shrink: 0;
+    z-index: 1;
+  }
+
+  /* ── METRICS BAR ── */
+  .metrics-bar {
+    display: flex;
+    gap: 0;
+    border-top: 1px solid #F0EBE6;
+  }
+  .metric-cell {
+    flex: 1;
+    padding: 14px 20px;
+    border-right: 1px solid #F0EBE6;
+    min-width: 120px;
+  }
+  .metric-cell:last-child { border-right: none; }
+  .metric-title {
+    font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.06em; color: #AAA; margin-bottom: 4px;
+  }
+  .metric-val { font-size: 15px; font-weight: 700; }
+  .metric-sub { font-size: 11px; color: #888; margin-top: 2px; }
+
+  /* speed pills */
+  .pill {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 2px 8px; border-radius: 99px;
+    font-size: 11px; font-weight: 700;
+  }
+  .pill-green { background: #DCFCE7; color: #166534; }
+  .pill-yellow { background: #FEF9C3; color: #854D0E; }
+  .pill-red { background: #FEE2E2; color: #991B1B; }
+
+  /* ── CSS MOCKUP (para fintechs sin screenshots) ── */
+  .css-mockup {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    font-size: 9px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #eee;
+  }
+  .mockup-bar {
+    padding: 8px 10px 4px;
+    font-size: 8px; font-weight: 700;
+    display: flex; align-items: center; gap: 4px;
+  }
+  .mockup-back { color: #888; }
+  .mockup-body { flex: 1; padding: 8px 10px; overflow: hidden; }
+  .mockup-title { font-size: 11px; font-weight: 700; margin-bottom: 4px; }
+  .mockup-field {
+    background: #F5F5F5; border-radius: 6px;
+    padding: 5px 7px; margin-bottom: 4px; font-size: 9px; color: #444;
+  }
+  .mockup-label { font-size: 8px; color: #999; margin-bottom: 2px; }
+  .mockup-value { font-size: 12px; font-weight: 700; }
+  .mockup-slider {
+    height: 3px; background: #E5E5E5; border-radius: 99px;
+    margin: 6px 0; position: relative;
+  }
+  .mockup-slider-fill {
+    height: 100%; border-radius: 99px;
+    position: absolute; left: 0; top: 0;
+  }
+  .mockup-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    position: absolute; top: -3.5px;
+    border: 2px solid white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  }
+  .mockup-btn {
+    border-radius: 8px; padding: 6px 10px;
+    text-align: center; font-weight: 700; font-size: 10px;
+    margin-top: 6px; color: white;
+  }
+  .mockup-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+  .mockup-small { font-size: 8px; color: #888; }
+  .mockup-check {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: #22C55E; display: flex; align-items: center;
+    justify-content: center; font-size: 14px; margin: 8px auto;
+  }
+
+  /* ── NOTA DE CIERRE ── */
+  .closed-notice {
+    background: #FEF3C7;
+    border: 1.5px solid #FCD34D;
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-size: 13px;
+    color: #92400E;
+    margin: 16px 24px 20px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  /* ── INSIGHT BOX ── */
+  .insight-box {
+    background: #EEF2FF;
+    border-left: 3px solid #6366F1;
+    border-radius: 0 8px 8px 0;
+    padding: 10px 16px;
+    margin: 0 24px 20px;
+    font-size: 12px;
+    color: #3730A3;
+    line-height: 1.5;
+  }
+  .insight-title { font-weight: 700; margin-bottom: 3px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  /* ── HALLAZGO FINAL ── */
+  .findings-row {
+    max-width: 1400px;
+    margin: 0 auto 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .finding-card {
+    background: white; border-radius: 12px;
+    padding: 20px; border: 1px solid #E8E2DC;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  .finding-icon { font-size: 24px; margin-bottom: 8px; }
+  .finding-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+  .finding-body { font-size: 12px; color: #555; line-height: 1.6; }
+
+  .footer {
+    text-align: center; font-size: 11px; color: #AAA;
+    padding: 24px 0; max-width: 1400px; margin: 0 auto;
+    border-top: 1px solid #D4CEC8;
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<div class="page-header">
+  <div>
+    <div class="header-label">Producto & Diseño · Visual Benchmark</div>
+    <div class="header-title">📱 Screenshots · Flujos de Originación</div>
+    <div class="header-sub">Capturas reales de apps oficiales y sitios web · Crédito personal · Marzo 2026</div>
+    <div class="legend" style="margin-top:14px;">
+      <div class="legend-item"><div class="legend-dot" style="background:#FF6B35"></div>México</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#8B5CF6"></div>LATAM</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#0EA5E9"></div>Europa</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#10B981"></div>USA</div>
+      <div class="legend-item">📸 Fuente: App Store / Sitio oficial</div>
+      <div class="legend-item">🎨 Fuente: Mockup recreado</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     MÉXICO
+══════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">🇲🇽 México</div>
+
+  <!-- KUESKI -->
+  <div class="fintech-block">
+    <div class="block-header">
+      <div class="block-header-left">
+        <div class="company-logo" style="background:#EBF5FF;color:#1A56DB;overflow:hidden;padding:4px;"><img src="https://www.google.com/s2/favicons?domain=kueski.com&sz=64" style="width:100%;height:100%;object-fit:contain;border-radius:6px;" onerror="this.outerHTML='K'"></div>
+        <div>
+          <div class="company-name">Kueski Cash</div>
+          <div class="company-sub">Préstamos personales · 100% digital · Sin historial crediticio</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <span class="region-tag" style="background:#FFF0EB;color:#FF6B35">🇲🇽 MX</span>
+        <span class="pill pill-green">⚡ Aprobación en segundos</span>
+        <span style="font-size:11px;color:#888;">📸 Fuente: kueski.com oficial</span>
+      </div>
+    </div>
+
+    <div class="screenshots-row">
+      <!-- Paso 1 -->
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <!-- CSS Mockup: Pantalla inicial de solicitud -->
+            <div class="css-mockup" style="background:#fff;">
+              <div class="mockup-bar" style="background:#F0F7FF;">
+                <span style="color:#1A56DB;font-size:10px">kueski</span>
+              </div>
+              <div class="mockup-body">
+                <div class="mockup-title" style="color:#1A1A1A;font-size:12px">¿Cuánto necesitas?</div>
+                <div style="color:#888;font-size:8px;margin-bottom:8px">Hasta $25,500 MXN</div>
+                <div class="mockup-label">Monto</div>
+                <div class="mockup-value" style="color:#1A56DB;font-size:16px">$5,000</div>
+                <div class="mockup-slider" style="margin:8px 0">
+                  <div class="mockup-slider-fill" style="width:35%;background:#1A56DB"></div>
+                  <div class="mockup-dot" style="left:calc(35% - 5px);background:#1A56DB"></div>
+                </div>
+                <div style="display:flex;justify-content:space-between;font-size:7px;color:#aaa;margin-bottom:8px">
+                  <span>$1,000</span><span>$25,500</span>
+                </div>
+                <div class="mockup-label">Plazo</div>
+                <div style="display:flex;gap:4px;margin-bottom:8px">
+                  <div style="background:#EBF5FF;color:#1A56DB;border-radius:4px;padding:3px 6px;font-size:8px;font-weight:700">7d</div>
+                  <div style="background:#1A56DB;color:white;border-radius:4px;padding:3px 6px;font-size:8px;font-weight:700">15d</div>
+                  <div style="background:#EBF5FF;color:#1A56DB;border-radius:4px;padding:3px 6px;font-size:8px;font-weight:700">30d</div>
+                </div>
+                <div class="mockup-btn" style="background:#1A56DB">Solicitar</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">1</div>
+        <div class="step-label">Elegís monto y plazo</div>
+      </div>
+
+      <div class="screen-arrow">→</div>
+
+      <!-- Paso 2: App screenshot oficial -->
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen" style="align-items:stretch;justify-content:flex-start;">
+            <div style="width:100%;height:100%;font-family:-apple-system,sans-serif;display:flex;flex-direction:column;overflow:hidden;background:#fff;font-size:6.5px;">
+              <div style="background:#EBF5FF;padding:8px 7px 5px;display:flex;align-items:center;gap:4px;">
+                <span style="font-size:9px;font-weight:700;color:#1A56DB;">kueski</span>
+              </div>
+              <div style="padding:7px 8px;flex:1;display:flex;flex-direction:column;overflow:hidden;">
+                <div style="font-size:8.5px;font-weight:700;margin-bottom:2px;">Préstamo preaprobado</div>
+                <div style="color:#888;margin-bottom:6px;font-size:6px;">¡Tienes una oferta lista!</div>
+                <div style="background:#EBF5FF;border-radius:6px;padding:6px;margin-bottom:6px;text-align:center;">
+                  <div style="font-size:7px;color:#1A56DB;margin-bottom:2px;">Monto aprobado</div>
+                  <div style="font-size:16px;font-weight:800;color:#1A56DB;">$1,900</div>
+                </div>
+                <div style="font-size:6.5px;font-weight:700;margin-bottom:3px;">Ajusta si quieres menos</div>
+                <div style="position:relative;height:4px;background:#E0E0E0;border-radius:99px;margin-bottom:8px;">
+                  <div style="position:absolute;left:0;top:0;width:60%;height:100%;background:#1A56DB;border-radius:99px;"></div>
+                  <div style="position:absolute;left:58%;top:-3px;width:10px;height:10px;border-radius:50%;background:#1A56DB;border:2px solid white;box-shadow:0 1px 3px rgba(0,0,0,0.3);"></div>
+                </div>
+                <div style="display:flex;justify-content:space-between;font-size:5.5px;color:#999;margin-bottom:8px;"><span>$500</span><span>$5,000</span></div>
+                <div style="border:1px solid #eee;border-radius:5px;overflow:hidden;margin-bottom:6px;">
+                  <div style="display:flex;justify-content:space-between;padding:3px 6px;border-bottom:1px solid #eee;"><span style="color:#888;">Plazo</span><span style="font-weight:600;">15 días</span></div>
+                  <div style="display:flex;justify-content:space-between;padding:3px 6px;"><span style="color:#888;">Comisión</span><span style="font-weight:600;">$38</span></div>
+                </div>
+                <div style="background:#1A56DB;color:#fff;text-align:center;border-radius:5px;padding:5px;font-size:7px;font-weight:700;">Aceptar y continuar</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">2</div>
+        <div class="step-label">Oferta preaprobada<br>con slider</div>
+      </div>
+
+      <div class="screen-arrow">→</div>
+
+      <!-- Paso 3: Datos personales -->
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="css-mockup" style="background:#fff;">
+              <div class="mockup-bar" style="background:#F0F7FF;">
+                <span class="mockup-back">←</span>
+                <span style="color:#1A1A1A;font-weight:700;font-size:9px">Tus datos</span>
+              </div>
+              <div class="mockup-body">
+                <div class="mockup-field">
+                  <div class="mockup-label">Nombre completo</div>
+                  <div style="font-size:10px;font-weight:600">María García López</div>
+                </div>
+                <div class="mockup-field">
+                  <div class="mockup-label">Email</div>
+                  <div style="font-size:9px;color:#666">maria@email.com</div>
+                </div>
+                <div class="mockup-field">
+                  <div class="mockup-label">Teléfono</div>
+                  <div style="font-size:10px;font-weight:600">55 1234 5678</div>
+                </div>
+                <div class="mockup-field">
+                  <div class="mockup-label">CURP</div>
+                  <div style="font-size:9px;color:#666">GARL900101MDFRRT</div>
+                </div>
+                <div class="mockup-btn" style="background:#1A56DB">Continuar</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">3</div>
+        <div class="step-label">Datos personales<br>(sin docs físicos)</div>
+      </div>
+
+      <div class="screen-arrow">→</div>
+
+      <!-- Paso 4: Scoring instantáneo -->
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="css-mockup" style="background:#fff;">
+              <div class="mockup-bar" style="background:#F0FFF4;"></div>
+              <div class="mockup-body" style="text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%">
+                <div style="font-size:28px;margin-bottom:8px">⚡</div>
+                <div style="font-weight:800;font-size:12px;margin-bottom:4px">¡Aprobado!</div>
+                <div style="color:#888;font-size:8px;margin-bottom:10px">Decisión en segundos</div>
+                <div style="background:#F0FFF4;border-radius:8px;padding:8px 12px;width:100%">
+                  <div style="font-size:8px;color:#888">Tu préstamo</div>
+                  <div style="font-size:16px;font-weight:800;color:#16A34A">$5,000 MXN</div>
+                  <div style="font-size:8px;color:#888">en 15 días</div>
+                </div>
+                <div class="mockup-btn" style="background:#16A34A;width:100%;margin-top:10px">Firmar y recibir</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">4</div>
+        <div class="step-label">Aprobación<br>en segundos ⚡</div>
+      </div>
+    </div>
+
+    <div class="insight-box">
+      <div class="insight-title">🔍 Insight UX</div>
+      Kueski es pionero en México en usar <strong>datos alternativos</strong> (huella digital, email, datos sociodemográficos) en lugar del Buró como criterio principal. El flujo tiene cero documentos físicos en el primer préstamo. La pantalla de oferta preaprobada con slider es el corazón del UX.
+    </div>
+
+    <div class="metrics-bar">
+      <div class="metric-cell">
+        <div class="metric-title">Aprobación</div>
+        <div class="metric-val" style="color:#16A34A">Segundos</div>
+        <div class="metric-sub"><span class="pill pill-green">⚡ Instantáneo</span></div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Desembolso</div>
+        <div class="metric-val">Minutos</div>
+        <div class="metric-sub">SPEI a cuenta bancaria</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Pasos (nuevo usuario)</div>
+        <div class="metric-val">6 pasos</div>
+        <div class="metric-sub">Sin docs físicos</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Scoring</div>
+        <div class="metric-val">IA + datos alternativos</div>
+        <div class="metric-sub">Sin Buró obligatorio</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Montos</div>
+        <div class="metric-val">$200–$25,500</div>
+        <div class="metric-sub">MXN</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NU MÉXICO -->
+  <div class="fintech-block">
+    <div class="block-header">
+      <div class="block-header-left">
+        <div class="company-logo" style="background:#F3E8FF;color:#7C3AED;overflow:hidden;padding:4px;"><img src="https://www.google.com/s2/favicons?domain=nu.com.mx&sz=64" style="width:100%;height:100%;object-fit:contain;border-radius:6px;" onerror="this.outerHTML='Nu'"></div>
+        <div>
+          <div class="company-name">Nu México</div>
+          <div class="company-sub">Neobank · Licencia bancaria CNBV (2025) · App-first</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <span class="region-tag" style="background:#FFF0EB;color:#FF6B35">🇲🇽 MX</span>
+        <span class="pill pill-yellow">🚀 Aprobación en minutos</span>
+        <span style="font-size:11px;color:#888;">📸 Fuente: nu.com.mx oficial</span>
+      </div>
+    </div>
+
+    <div class="screenshots-row">
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen" style="background:#820AD1">
+            <div class="css-mockup" style="background:#820AD1;color:white;">
+              <div class="mockup-bar" style="background:#6B0AAF;">
+                <span style="font-weight:800;font-size:11px;color:white">nu</span>
+              </div>
+              <div class="mockup-body">
+                <div style="font-size:8px;color:#D8B4FE;margin-bottom:4px">Buenos días 👋</div>
+                <div style="font-size:11px;font-weight:700;color:white;margin-bottom:10px">Hola, María</div>
+                <div style="background:#6B0AAF;border-radius:8px;padding:8px;margin-bottom:6px">
+                  <div style="font-size:8px;color:#D8B4FE">Cuenta Nu</div>
+                  <div style="font-size:13px;font-weight:800;color:white">$12,450.00</div>
+                </div>
+                <div style="background:#7C3AED;border-radius:8px;padding:8px;border:1px solid #9333EA;">
+                  <div style="font-size:8px;color:#D8B4FE">💜 Tienes un préstamo disponible</div>
+                  <div style="font-size:10px;font-weight:700;color:white">Hasta $24,000</div>
+                  <div style="font-size:7px;color:#C4B5FD;margin-top:2px">Ver mi oferta →</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">1</div>
+        <div class="step-label">Oferta visible<br>en home app</div>
+      </div>
+
+      <div class="screen-arrow">→</div>
+
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen" style="align-items:stretch;justify-content:flex-start;">
+            <div style="width:100%;height:100%;font-family:-apple-system,sans-serif;display:flex;flex-direction:column;overflow:hidden;background:#820AD1;font-size:6.5px;color:white;">
+              <div style="background:#6B0AAF;padding:8px 8px 5px;display:flex;align-items:center;gap:4px;">
+                <span style="font-size:7px;color:#D8B4FE;">←</span>
+                <span style="font-size:7px;font-weight:800;color:white;flex:1;text-align:center;">Préstamo personal</span>
+              </div>
+              <div style="padding:7px 8px;flex:1;display:flex;flex-direction:column;overflow:hidden;">
+                <div style="font-size:8px;font-weight:700;margin-bottom:7px;text-align:center;">¿Cuánto necesitas?</div>
+                <div style="text-align:center;margin-bottom:5px;">
+                  <div style="font-size:7px;color:#D8B4FE;margin-bottom:2px;">Podés pedir hasta $24,000</div>
+                  <div style="font-size:18px;font-weight:800;">$6,000</div>
+                </div>
+                <div style="position:relative;height:4px;background:rgba(255,255,255,0.2);border-radius:99px;margin-bottom:3px;">
+                  <div style="position:absolute;left:0;top:0;width:25%;height:100%;background:white;border-radius:99px;"></div>
+                  <div style="position:absolute;left:23%;top:-3px;width:10px;height:10px;border-radius:50%;background:white;box-shadow:0 1px 4px rgba(0,0,0,0.4);"></div>
+                </div>
+                <div style="display:flex;justify-content:space-between;font-size:5.5px;color:rgba(255,255,255,0.6);margin-bottom:8px;"><span>$500</span><span>$24,000</span></div>
+                <div style="font-size:7px;font-weight:700;margin-bottom:4px;">¿En cuántas cuotas?</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;margin-bottom:8px;">
+                  <div style="background:rgba(255,255,255,0.15);border-radius:4px;padding:3px;text-align:center;font-size:6px;">3<br>meses</div>
+                  <div style="background:rgba(255,255,255,0.15);border-radius:4px;padding:3px;text-align:center;font-size:6px;">6<br>meses</div>
+                  <div style="background:white;color:#820AD1;border-radius:4px;padding:3px;text-align:center;font-size:6px;font-weight:700;">12<br>meses</div>
+                  <div style="background:rgba(255,255,255,0.15);border-radius:4px;padding:3px;text-align:center;font-size:6px;">18<br>meses</div>
+                  <div style="background:rgba(255,255,255,0.15);border-radius:4px;padding:3px;text-align:center;font-size:6px;">24<br>meses</div>
+                </div>
+                <div style="background:rgba(255,255,255,0.1);border-radius:5px;padding:5px;margin-bottom:6px;font-size:6px;">
+                  <div style="display:flex;justify-content:space-between;margin-bottom:2px;"><span style="color:#D8B4FE;">Cuota mensual</span><span style="font-weight:700;color:#C4B5FD;">$567/mes</span></div>
+                  <div style="display:flex;justify-content:space-between;"><span style="color:#D8B4FE;">Total a pagar</span><span style="font-weight:600;">$6,804</span></div>
+                </div>
+                <div style="background:white;color:#820AD1;text-align:center;border-radius:20px;padding:5px;font-size:7px;font-weight:700;">Continuar →</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">2</div>
+        <div class="step-label">Calcular préstamo<br>monto + plazo</div>
+      </div>
+
+      <div class="screen-arrow">→</div>
+
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="css-mockup" style="background:#fff;">
+              <div class="mockup-bar" style="background:#F5F0FF;">
+                <span class="mockup-back" style="color:#7C3AED">←</span>
+                <span style="font-size:9px;font-weight:700">Revisa tu préstamo</span>
+              </div>
+              <div class="mockup-body">
+                <div class="mockup-row">
+                  <span class="mockup-small">Monto</span>
+                  <span style="font-weight:700;font-size:11px">$6,000</span>
+                </div>
+                <div class="mockup-row">
+                  <span class="mockup-small">Plazo</span>
+                  <span style="font-weight:700;font-size:11px">12 meses</span>
+                </div>
+                <div class="mockup-row">
+                  <span class="mockup-small">Cuota mensual</span>
+                  <span style="font-weight:700;font-size:11px;color:#7C3AED">$567/mes</span>
+                </div>
+                <div style="height:1px;background:#F0EBF8;margin:6px 0"></div>
+                <div class="mockup-row">
+                  <span class="mockup-small">CAT</span>
+                  <span style="font-size:9px">62.5%</span>
+                </div>
+                <div class="mockup-row">
+                  <span class="mockup-small">Total a pagar</span>
+                  <span style="font-size:9px">$6,804</span>
+                </div>
+                <div class="mockup-btn" style="background:#7C3AED;margin-top:8px">Confirmar</div>
+                <div style="text-align:center;font-size:7px;color:#999;margin-top:4px">Al confirmar, firmas el contrato</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">3</div>
+        <div class="step-label">Revisión y<br>firma electrónica</div>
+      </div>
+
+      <div class="screen-arrow">→</div>
+
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen" style="align-items:stretch;justify-content:flex-start;">
+            <div style="width:100%;height:100%;font-family:-apple-system,sans-serif;display:flex;flex-direction:column;overflow:hidden;background:#820AD1;font-size:6.5px;color:white;">
+              <div style="background:#6B0AAF;padding:8px 8px 5px;display:flex;align-items:center;gap:4px;">
+                <span style="font-weight:800;color:white;">nu</span>
+              </div>
+              <div style="padding:8px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:5px;">
+                <div style="font-size:18px;">🎉</div>
+                <div style="font-size:9px;font-weight:800;">¡Préstamo recibido!</div>
+                <div style="font-size:5.5px;color:#D8B4FE;line-height:1.4;">Tu préstamo personal Nu está en tu cuenta</div>
+                <div style="background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 8px;width:100%;margin-top:4px;">
+                  <div style="font-size:5.5px;color:#D8B4FE;margin-bottom:2px;">Depositado</div>
+                  <div style="font-size:16px;font-weight:800;color:white;">$6,000</div>
+                  <div style="display:flex;align-items:center;justify-content:center;gap:2px;margin-top:2px;"><span style="font-size:7px;">⚡</span><span style="font-size:5.5px;color:#C4B5FD;">Instantáneo · Cuenta Nu</span></div>
+                </div>
+                <div style="background:white;color:#820AD1;border-radius:20px;padding:5px 12px;font-size:7px;font-weight:700;margin-top:6px;">Ver mis pagos →</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">4</div>
+        <div class="step-label">Depósito a<br>Cuenta Nu</div>
+      </div>
+    </div>
+
+    <div class="insight-box">
+      <div class="insight-title">🔍 Insight UX</div>
+      Nu tiene el <strong>mejor diseño emocional del estudio</strong>: la app es extremadamente limpia, sin comisiones ocultas y con lenguaje simple. Con su licencia bancaria 2025, el flujo de préstamo personal está integrado directamente a la Cuenta Nu → desembolso sin salir del ecosistema. El pre-aprobado visible en home es un diferencial fuerte.
+    </div>
+
+    <div class="metrics-bar">
+      <div class="metric-cell">
+        <div class="metric-title">Aprobación</div>
+        <div class="metric-val" style="color:#F59E0B">Minutos</div>
+        <div class="metric-sub"><span class="pill pill-yellow">🚀 Rápido</span></div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Desembolso</div>
+        <div class="metric-val">Minutos–1 día</div>
+        <div class="metric-sub">Wallet Nu / SPEI</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Pasos (cuenta existente)</div>
+        <div class="metric-val">3–4 pasos</div>
+        <div class="metric-sub">KYC ya completado</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Scoring</div>
+        <div class="metric-val">Nu Score propio</div>
+        <div class="metric-sub">Comportamiento en app</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Montos</div>
+        <div class="metric-val">$500–$24,000</div>
+        <div class="metric-sub">MXN · sin comisiones</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AVIVA -->
+  <div class="fintech-block">
+    <div class="block-header">
+      <div class="block-header-left">
+        <div class="company-logo" style="background:#FFF0F0;color:#E53E3E;overflow:hidden;padding:4px;"><img src="https://www.google.com/s2/favicons?domain=avivacredito.com&sz=64" style="width:100%;height:100%;object-fit:contain;border-radius:6px;" onerror="this.outerHTML='Av'"></div>
+        <div>
+          <div class="company-name">Aviva</div>
+          <div class="company-sub">México · IA + videollamada · Phygital · Crédito en 10 min · Poblaciones no bancarizadas</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <span class="region-tag" style="background:#FFF0EB;color:#FF6B35">🇲🇽 MX</span>
+        <span class="pill pill-yellow">🤖 Aprobación IA en tiempo real</span>
+        <span style="font-size:11px;color:#888;">📸 Fuente: avivacredito.com</span>
+      </div>
+    </div>
+
+    <div class="screenshots-row">
+      <!-- Paso 1: Kiosco físico / Inicio -->
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen" style="align-items:stretch;justify-content:flex-start;">
+            <div style="width:100%;height:100%;font-family:-apple-system,sans-serif;display:flex;flex-direction:column;overflow:hidden;background:#fff;font-size:6.5px;">
+              <div style="background:#E53E3E;padding:8px 7px 5px;display:flex;align-items:center;gap:4px;">
+                <span style="font-size:7px;font-weight:800;color:white;flex:1;text-align:center;">aviva</span>
+              </div>
+              <div style="padding:7px 8px;flex:1;display:flex;flex-direction:column;gap:5px;overflow:hidden;">
+                <div style="font-size:7.5px;font-weight:700;">Solicita tu crédito</div>
+                <div style="font-size:5.5px;color:#666;line-height:1.4;">Disponible en quioscos de 42 ciudades. Un asesor te guía.</div>
+                <div style="background:#FFF0F0;border-radius:6px;padding:6px;text-align:center;">
+                  <div style="font-size:16px;margin-bottom:3px;">🏪</div>
+                  <div style="font-size:6.5px;font-weight:700;color:#E53E3E;">Quiosco Aviva</div>
+                  <div style="font-size:5.5px;color:#888;">Tu ciudad · 1 quiosco disponible</div>
+                </div>
+                <div style="border:1px solid #eee;border-radius:5px;overflow:hidden;">
+                  <div style="display:flex;justify-content:space-between;padding:3px 6px;border-bottom:1px solid #eee;"><span style="color:#888;">Monto mín.</span><span style="font-weight:600;">$1,000 MXN</span></div>
+                  <div style="display:flex;justify-content:space-between;padding:3px 6px;"><span style="color:#888;">Monto máx.</span><span style="font-weight:600;">$15,000 MXN</span></div>
+                </div>
+                <div style="background:#E53E3E;color:#fff;text-align:center;border-radius:5px;padding:5px;font-size:7px;font-weight:700;margin-top:auto;">Comenzar solicitud</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">1</div>
+        <div class="step-label">Quiosco físico<br>+ asesor</div>
+      </div>
+
+      <div class="screen-arrow">→</div>
+
+      <!-- Paso 2: Videollamada IA -->
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen" style="align-items:stretch;justify-content:flex-start;">
+            <div style="width:100%;height:100%;font-family:-apple-system,sans-serif;display:flex;flex-direction:column;overflow:hidden;background:#1A1A2E;font-size:6.5px;color:white;">
+              <div style="background:#0D0D1A;padding:8px 7px 5px;display:flex;align-items:center;gap:4px;">
+                <span style="font-size:7px;font-weight:800;color:white;">aviva</span>
+                <span style="margin-left:auto;background:#E53E3E;border-radius:3px;padding:1px 4px;font-size:5px;color:white;">● LIVE</span>
+              </div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6px;gap:4px;">
+                <div style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#E53E3E,#FC8181);display:flex;align-items:center;justify-content:center;font-size:20px;border:2px solid rgba(255,255,255,0.3);">🤖</div>
+                <div style="font-size:7px;font-weight:700;text-align:center;">Videobot IA</div>
+                <div style="font-size:5.5px;color:#9CA3AF;text-align:center;line-height:1.4;">Responde las preguntas. La IA analiza en tiempo real.</div>
+                <div style="background:rgba(229,62,62,0.2);border:1px solid rgba(229,62,62,0.4);border-radius:5px;padding:5px;width:100%;text-align:center;">
+                  <div style="font-size:6px;color:#FC8181;">Analizando:</div>
+                  <div style="font-size:5.5px;color:#D1D5DB;margin-top:1px;">microexpresiones · voz · pupila</div>
+                </div>
+              </div>
+              <div style="padding:5px 7px 6px;">
+                <div style="background:rgba(255,255,255,0.1);color:#D1D5DB;text-align:center;border-radius:5px;padding:4px;font-size:6px;">⏱ ~7 minutos · No interrumpas la llamada</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">2</div>
+        <div class="step-label">Videollamada IA<br>scoring en vivo</div>
+      </div>
+
+      <div class="screen-arrow">→</div>
+
+      <!-- Paso 3: Documentos por WhatsApp -->
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen" style="align-items:stretch;justify-content:flex-start;">
+            <div style="width:100%;height:100%;font-family:-apple-system,sans-serif;display:flex;flex-direction:column;overflow:hidden;background:#fff;font-size:6.5px;">
+              <div style="background:#25D366;padding:8px 7px 5px;display:flex;align-items:center;gap:4px;">
+                <span style="font-size:9px;">💬</span>
+                <span style="font-size:7px;font-weight:700;color:white;">WhatsApp · Aviva</span>
+              </div>
+              <div style="padding:7px 8px;flex:1;display:flex;flex-direction:column;gap:5px;overflow:hidden;">
+                <div style="background:#DCF8C6;border-radius:6px 6px 6px 0;padding:5px;align-self:flex-start;max-width:90%;">
+                  <div style="font-size:6px;color:#333;line-height:1.4;">Hola! Necesitamos 2 documentos para continuar:</div>
+                  <div style="font-size:6px;color:#333;margin-top:3px;">📄 Comprobante de domicilio<br>🏦 Estado de cuenta (últ. 3 meses)</div>
+                </div>
+                <div style="background:#f5f5f5;border-radius:5px;padding:5px;border:1px dashed #ccc;text-align:center;">
+                  <div style="font-size:12px;">📎</div>
+                  <div style="font-size:5.5px;color:#888;">Adjuntar archivo</div>
+                </div>
+                <div style="background:#DCF8C6;border-radius:6px 6px 6px 0;padding:5px;align-self:flex-start;max-width:90%;">
+                  <div style="font-size:6px;color:#333;">✅ Docs recibidos. Revisando... (24h)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">3</div>
+        <div class="step-label">Docs por<br>WhatsApp</div>
+      </div>
+
+      <div class="screen-arrow">→</div>
+
+      <!-- Paso 4: Aprobación y depósito -->
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen" style="align-items:stretch;justify-content:flex-start;">
+            <div style="width:100%;height:100%;font-family:-apple-system,sans-serif;display:flex;flex-direction:column;overflow:hidden;background:#fff;font-size:6.5px;">
+              <div style="background:#E53E3E;padding:8px 7px 5px;">
+                <span style="font-size:7px;font-weight:800;color:white;">aviva</span>
+              </div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px;text-align:center;gap:5px;">
+                <div style="width:28px;height:28px;background:#FFF0F0;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;">✅</div>
+                <div style="font-size:9px;font-weight:800;color:#E53E3E;">¡Aprobado!</div>
+                <div style="font-size:5.5px;color:#666;line-height:1.4;">Decisión en tiempo real por IA. Depósito en 24 hrs.</div>
+                <div style="background:#FFF0F0;border-radius:6px;padding:6px;width:100%;margin-top:2px;">
+                  <div style="font-size:5.5px;color:#888;margin-bottom:2px;">Tu préstamo</div>
+                  <div style="font-size:14px;font-weight:800;color:#E53E3E;">$5,000 MXN</div>
+                  <div style="font-size:5.5px;color:#888;margin-top:1px;">Depósito en 24 horas · SPEI</div>
+                </div>
+              </div>
+              <div style="padding:5px 8px 6px;">
+                <div style="background:#E53E3E;color:#fff;text-align:center;border-radius:5px;padding:5px;font-size:7px;font-weight:700;">Ver mi crédito</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">4</div>
+        <div class="step-label">Aprobación IA<br>depósito 24h</div>
+      </div>
+    </div>
+
+    <div class="insight-box">
+      <div class="insight-title">🔍 Insight UX</div>
+      Aviva usa el modelo <strong>"phygital"</strong>: la solicitud comienza en un quiosco físico con asesor humano, pero el scoring es 100% IA a través de videollamada (7–20 min). El videobot analiza microexpresiones, movimiento ocular, dilatación pupilar y ritmo cardíaco. <strong>UX diferenciador</strong>: elimina la necesidad de historial crediticio formal, ideal para trabajadores informales. Los docs se envían por WhatsApp. Disbursement: 24 horas vía SPEI.
+    </div>
+
+    <div class="metrics-bar">
+      <div class="metric-cell">
+        <div class="metric-title">Aprobación</div>
+        <div class="metric-val" style="color:#E53E3E">Real-time IA</div>
+        <div class="metric-sub"><span class="pill pill-yellow">🤖 IA videollamada</span></div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Desembolso</div>
+        <div class="metric-val">24 horas</div>
+        <div class="metric-sub">SPEI a cuenta bancaria</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Pasos</div>
+        <div class="metric-val">4 pasos</div>
+        <div class="metric-sub">Quiosco + IA + WhatsApp + depósito</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Scoring</div>
+        <div class="metric-val">IA biométrica</div>
+        <div class="metric-sub">Microexpresiones + voz + pupila</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Montos</div>
+        <div class="metric-val">$1,000–$15,000</div>
+        <div class="metric-sub">MXN · 42 ciudades</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MUNI -->
+  <div class="fintech-block">
+    <div class="block-header">
+      <div class="block-header-left">
+        <div class="company-logo" style="background:#EFF6FF;color:#2563EB;overflow:hidden;padding:4px;"><img src="https://www.google.com/s2/favicons?domain=muni.com.mx&sz=64" style="width:100%;height:100%;object-fit:contain;border-radius:6px;" onerror="this.outerHTML='Mn'"></div>
+        <div>
+          <div class="company-name">MUNI</div>
+          <div class="company-sub">México · Crédito hipotecario digital · Comparador + gestión 100% online</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <span class="region-tag" style="background:#FFF0EB;color:#FF6B35">🇲🇽 MX</span>
+        <span class="pill pill-blue" style="background:#EFF6FF;color:#2563EB;">🏠 Crédito hipotecario digital</span>
+        <span style="font-size:11px;color:#888;">📸 Fuente: muni.com.mx</span>
+      </div>
+    </div>
+
+    <div class="screenshots-row">
+      <!-- Paso 1: Simulador hipotecario -->
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen" style="align-items:stretch;justify-content:flex-start;">
+            <div style="width:100%;height:100%;font-family:-apple-system,sans-serif;display:flex;flex-direction:column;overflow:hidden;background:#fff;font-size:6.5px;">
+              <div style="background:#2563EB;padding:8px 7px 5px;display:flex;align-items:center;gap:4px;">
+                <span style="font-size:7px;font-weight:800;color:white;">MUNI</span>
+              </div>
+              <div style="padding:7px 8px;flex:1;display:flex;flex-direction:column;gap:5px;overflow:hidden;">
+                <div style="font-size:8px;font-weight:700;">Simula tu crédito</div>
+                <div style="font-size:5.5px;color:#666;">Compara las mejores opciones hipotecarias del mercado</div>
+                <div style="border:1px solid #eee;border-radius:5px;overflow:hidden;">
+                  <div style="padding:4px 6px;background:#f7f8fa;border-bottom:1px solid #eee;font-size:6px;font-weight:700;">Valor del inmueble</div>
+                  <div style="padding:4px 6px;font-size:8px;font-weight:700;color:#2563EB;">$2,500,000 MXN</div>
+                </div>
+                <div style="border:1px solid #eee;border-radius:5px;overflow:hidden;">
+                  <div style="padding:4px 6px;background:#f7f8fa;border-bottom:1px solid #eee;font-size:6px;font-weight:700;">Enganche (20%)</div>
+                  <div style="padding:4px 6px;font-size:8px;font-weight:700;color:#2563EB;">$500,000 MXN</div>
+                </div>
+                <div style="border:1px solid #eee;border-radius:5px;overflow:hidden;">
+                  <div style="padding:4px 6px;background:#f7f8fa;border-bottom:1px solid #eee;font-size:6px;font-weight:700;">Plazo</div>
+                  <div style="padding:4px 6px;font-size:8px;font-weight:700;color:#2563EB;">20 años</div>
+                </div>
+                <div style="background:#2563EB;color:#fff;text-align:center;border-radius:5px;padding:5px;font-size:7px;font-weight:700;margin-top:auto;">Ver opciones →</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">1</div>
+        <div class="step-label">Simulador<br>hipotecario</div>
+      </div>
+
+      <div class="screen-arrow">→</div>
+
+      <!-- Paso 2: Comparador de bancos -->
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen" style="align-items:stretch;justify-content:flex-start;">
+            <div style="width:100%;height:100%;font-family:-apple-system,sans-serif;display:flex;flex-direction:column;overflow:hidden;background:#fff;font-size:6.5px;">
+              <div style="background:#2563EB;padding:8px 7px 5px;display:flex;align-items:center;">
+                <span style="font-size:7px;color:white;">←</span>
+                <span style="font-size:7px;font-weight:700;color:white;flex:1;text-align:center;">Opciones disponibles</span>
+              </div>
+              <div style="padding:6px 7px;flex:1;overflow:hidden;">
+                <div style="font-size:6.5px;font-weight:700;margin-bottom:5px;">3 opciones para ti</div>
+                <div style="border:1px solid #BFDBFE;border-radius:5px;padding:5px;margin-bottom:4px;background:#EFF6FF;">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;"><span style="font-size:6px;font-weight:700;color:#1D4ED8;">BBVA</span><span style="background:#2563EB;color:white;border-radius:3px;padding:1px 4px;font-size:5px;">⭐ Mejor tasa</span></div>
+                  <div style="display:flex;justify-content:space-between;font-size:5.5px;"><span style="color:#666;">Tasa</span><span style="font-weight:600;">9.3% anual</span></div>
+                  <div style="display:flex;justify-content:space-between;font-size:5.5px;"><span style="color:#666;">Mensualidad</span><span style="font-weight:600;">$18,450</span></div>
+                </div>
+                <div style="border:1px solid #eee;border-radius:5px;padding:5px;margin-bottom:4px;">
+                  <div style="font-size:6px;font-weight:700;margin-bottom:2px;">Banorte</div>
+                  <div style="display:flex;justify-content:space-between;font-size:5.5px;"><span style="color:#666;">Tasa</span><span style="font-weight:600;">10.1% anual</span></div>
+                  <div style="display:flex;justify-content:space-between;font-size:5.5px;"><span style="color:#666;">Mensualidad</span><span style="font-weight:600;">$19,680</span></div>
+                </div>
+                <div style="border:1px solid #eee;border-radius:5px;padding:5px;">
+                  <div style="font-size:6px;font-weight:700;margin-bottom:2px;">HSBC</div>
+                  <div style="display:flex;justify-content:space-between;font-size:5.5px;"><span style="color:#666;">Tasa</span><span style="font-weight:600;">10.8% anual</span></div>
+                  <div style="display:flex;justify-content:space-between;font-size:5.5px;"><span style="color:#666;">Mensualidad</span><span style="font-weight:600;">$20,340</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">2</div>
+        <div class="step-label">Comparador<br>de bancos</div>
+      </div>
+
+      <div class="screen-arrow">→</div>
+
+      <!-- Paso 3: Solicitud digital -->
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen" style="align-items:stretch;justify-content:flex-start;">
+            <div style="width:100%;height:100%;font-family:-apple-system,sans-serif;display:flex;flex-direction:column;overflow:hidden;background:#fff;font-size:6.5px;">
+              <div style="background:#2563EB;padding:8px 7px 5px;display:flex;align-items:center;">
+                <span style="font-size:7px;color:white;">←</span>
+                <span style="font-size:7px;font-weight:700;color:white;flex:1;text-align:center;">Solicitud BBVA</span>
+              </div>
+              <div style="padding:7px 8px;flex:1;overflow:hidden;">
+                <div style="font-size:7.5px;font-weight:700;margin-bottom:5px;">Tus datos personales</div>
+                <div style="background:#f5f5f5;border-radius:4px;padding:4px 6px;margin-bottom:3px;"><div style="font-size:5.5px;color:#888;">Nombre completo</div><div style="font-size:7px;">Juan Pérez García</div></div>
+                <div style="background:#f5f5f5;border-radius:4px;padding:4px 6px;margin-bottom:3px;"><div style="font-size:5.5px;color:#888;">RFC</div><div style="font-size:7px;">PEGJ850312XXX</div></div>
+                <div style="background:#f5f5f5;border-radius:4px;padding:4px 6px;margin-bottom:3px;"><div style="font-size:5.5px;color:#888;">Ingresos mensuales</div><div style="font-size:7px;">$45,000 MXN</div></div>
+                <div style="background:#f5f5f5;border-radius:4px;padding:4px 6px;margin-bottom:6px;"><div style="font-size:5.5px;color:#888;">Comprobante de ingresos</div><div style="font-size:7px;color:#2563EB;">📎 Adjuntar</div></div>
+                <div style="background:#2563EB;color:#fff;text-align:center;border-radius:5px;padding:5px;font-size:7px;font-weight:700;">Enviar solicitud</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">3</div>
+        <div class="step-label">Solicitud<br>100% digital</div>
+      </div>
+
+      <div class="screen-arrow">→</div>
+
+      <!-- Paso 4: Seguimiento -->
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen" style="align-items:stretch;justify-content:flex-start;">
+            <div style="width:100%;height:100%;font-family:-apple-system,sans-serif;display:flex;flex-direction:column;overflow:hidden;background:#fff;font-size:6.5px;">
+              <div style="background:#2563EB;padding:8px 7px 5px;">
+                <span style="font-size:7px;font-weight:800;color:white;">MUNI</span>
+              </div>
+              <div style="padding:7px 8px;flex:1;display:flex;flex-direction:column;gap:4px;overflow:hidden;">
+                <div style="font-size:8px;font-weight:700;">Estado de tu solicitud</div>
+                <div style="display:flex;flex-direction:column;gap:4px;">
+                  <div style="display:flex;align-items:center;gap:5px;"><div style="width:14px;height:14px;border-radius:50%;background:#16A34A;display:flex;align-items:center;justify-content:center;color:white;font-size:7px;flex-shrink:0;">✓</div><span style="font-size:6px;">Simulación completada</span></div>
+                  <div style="display:flex;align-items:center;gap:5px;"><div style="width:14px;height:14px;border-radius:50%;background:#16A34A;display:flex;align-items:center;justify-content:center;color:white;font-size:7px;flex-shrink:0;">✓</div><span style="font-size:6px;">Documentos enviados</span></div>
+                  <div style="display:flex;align-items:center;gap:5px;"><div style="width:14px;height:14px;border-radius:50%;background:#F59E0B;display:flex;align-items:center;justify-content:center;color:white;font-size:7px;flex-shrink:0;">⏳</div><span style="font-size:6px;color:#B45309;">Revisión banco (5–10 días)</span></div>
+                  <div style="display:flex;align-items:center;gap:5px;"><div style="width:14px;height:14px;border-radius:50%;background:#E5E7EB;display:flex;align-items:center;justify-content:center;color:#9CA3AF;font-size:7px;flex-shrink:0;">○</div><span style="font-size:6px;color:#9CA3AF;">Aprobación formal</span></div>
+                </div>
+                <div style="background:#EFF6FF;border-radius:5px;padding:5px;margin-top:auto;text-align:center;"><div style="font-size:6px;color:#1D4ED8;font-weight:600;">Asesor MUNI asignado ✓</div><div style="font-size:5.5px;color:#666;margin-top:1px;">Te acompaña hasta la firma</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">4</div>
+        <div class="step-label">Seguimiento<br>con asesor</div>
+      </div>
+    </div>
+
+    <div class="insight-box">
+      <div class="insight-title">🔍 Insight UX</div>
+      MUNI posiciona el <strong>crédito hipotecario como un comparador digital</strong>: el usuario simula, compara tasas de múltiples bancos en una pantalla y gestiona toda la solicitud online. El diferencial es el <strong>asesor humano asignado</strong> que acompaña hasta el cierre. UX transparente con comparativa en tiempo real. Aprobación depende del banco elegido (5–10 días hábiles). No tiene scoring propio.
+    </div>
+
+    <div class="metrics-bar">
+      <div class="metric-cell">
+        <div class="metric-title">Aprobación</div>
+        <div class="metric-val" style="color:#F59E0B">5–10 días</div>
+        <div class="metric-sub">Depende del banco elegido</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Tipo de crédito</div>
+        <div class="metric-val">Hipotecario</div>
+        <div class="metric-sub">Vivienda · Comparador bancario</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Pasos</div>
+        <div class="metric-val">4 pasos</div>
+        <div class="metric-sub">Simular → Comparar → Solicitar → Seguir</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Scoring</div>
+        <div class="metric-val">Bancario</div>
+        <div class="metric-sub">Sin scoring propio</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Montos</div>
+        <div class="metric-val">$500K–$5M+</div>
+        <div class="metric-sub">MXN · Crédito hipotecario</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     LATAM
+══════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">🌎 LATAM</div>
+
+  <!-- MERCADO PAGO -->
+  <div class="fintech-block">
+    <div class="block-header">
+      <div class="block-header-left">
+        <div class="company-logo" style="background:#E8F4FD;color:#009EE3;overflow:hidden;padding:4px;"><img src="https://www.google.com/s2/favicons?domain=mercadopago.com&sz=64" style="width:100%;height:100%;object-fit:contain;border-radius:6px;" onerror="this.outerHTML='MP'"></div>
+        <div>
+          <div class="company-name">Mercado Pago</div>
+          <div class="company-sub">MX · AR · BR · CO · PE · Embedded Finance · Mercado Crédito</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <span class="region-tag" style="background:#F3EEFF;color:#8B5CF6">🌎 LATAM</span>
+        <span class="pill pill-green">⚡ Aprobación instantánea</span>
+        <span style="font-size:11px;color:#888;">📸 Fuente: capturas reales de la app</span>
+      </div>
+    </div>
+
+    <div class="screenshots-row">
+
+      <!-- PASO 1: Créditos — límite disponible -->
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen" style="align-items:stretch;justify-content:flex-start;">
+            <div style="width:100%;height:100%;font-family:-apple-system,sans-serif;display:flex;flex-direction:column;overflow:hidden;background:#fff;font-size:6.5px;">
+              <div style="background:#FFE600;padding:8px 7px 6px;display:flex;align-items:center;justify-content:space-between;">
+                <span style="font-size:7px;font-weight:700;">← &nbsp;Créditos</span>
+                <span style="font-size:8px;color:#555;">⊙</span>
+              </div>
+              <div style="padding:7px 7px 0;">
+                <div style="font-size:7.5px;font-weight:700;margin-bottom:7px;">Aprovechá tu crédito disponible</div>
+                <div style="border:1px solid #eee;border-radius:6px;padding:6px;margin-bottom:5px;">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
+                    <span style="color:#666;">Límite disponible</span>
+                    <span style="color:#3483FA;">Ir al detalle ›</span>
+                  </div>
+                  <div style="font-size:9.5px;font-weight:700;margin-bottom:6px;">$ 3.728.245</div>
+                  <div style="background:#f7f7f7;border-radius:5px;padding:5px 6px;display:flex;align-items:center;gap:4px;">
+                    <div style="flex:1;">
+                      <div style="font-size:6px;font-weight:600;line-height:1.3;">Pedí un Préstamo Personal al instante</div>
+                    </div>
+                    <div style="background:#3483FA;color:#fff;border-radius:4px;padding:3px 7px;font-size:6.5px;font-weight:700;white-space:nowrap;">Simular</div>
+                  </div>
+                  <div style="display:flex;justify-content:center;gap:3px;margin-top:4px;">
+                    <span style="width:4px;height:4px;border-radius:50%;background:#3483FA;display:inline-block;"></span>
+                    <span style="width:4px;height:4px;border-radius:50%;background:#ddd;display:inline-block;"></span>
+                    <span style="width:4px;height:4px;border-radius:50%;background:#ddd;display:inline-block;"></span>
+                  </div>
+                </div>
+                <div style="border:1px solid #eee;border-radius:6px;padding:6px;">
+                  <span style="color:#3483FA;">📎</span> <span style="color:#555;">Créditos finalizados ›</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">1</div>
+        <div class="step-label">Créditos<br>disponibles</div>
+      </div>
+
+      <div class="screen-arrow">→</div>
+
+      <!-- PASO 2: Ingresá el monto -->
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen" style="align-items:stretch;justify-content:flex-start;">
+            <div style="width:100%;height:100%;font-family:-apple-system,sans-serif;display:flex;flex-direction:column;overflow:hidden;background:#fff;font-size:6.5px;">
+              <div style="background:#FFE600;padding:8px 7px 6px;display:flex;align-items:center;gap:4px;">
+                <span style="font-size:7px;">←</span>
+                <span style="font-size:7px;font-weight:700;flex:1;text-align:center;">Préstamo Personal</span>
+              </div>
+              <div style="padding:8px 8px 0;flex:1;display:flex;flex-direction:column;">
+                <div style="font-size:8px;font-weight:700;margin-bottom:2px;">Ingresá el monto</div>
+                <div style="color:#555;margin-bottom:10px;">Podés pedir hasta $&nbsp;3.728.245</div>
+                <div style="text-align:center;margin-bottom:5px;">
+                  <span style="font-size:18px;font-weight:700;letter-spacing:-0.5px;">$&nbsp;1.000</span>
+                  <span style="display:block;width:2px;height:14px;background:#3483FA;margin:0 auto;"></span>
+                </div>
+                <div style="text-align:center;margin-bottom:8px;">
+                  <span style="border:1px solid #ddd;border-radius:10px;padding:2px 6px;font-size:6px;color:#333;">Usar todo</span>
+                </div>
+                <div style="background:#3483FA;color:#fff;text-align:center;border-radius:5px;padding:5px;font-size:7px;font-weight:700;margin:auto 0 6px;">Continuar</div>
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;border:1px solid #eee;border-radius:4px;overflow:hidden;">
+                  <div style="padding:4px;text-align:center;font-size:7.5px;border-right:1px solid #eee;border-bottom:1px solid #eee;">1</div>
+                  <div style="padding:4px;text-align:center;font-size:7.5px;border-right:1px solid #eee;border-bottom:1px solid #eee;">2<br><span style="font-size:4px;color:#999;">ABC</span></div>
+                  <div style="padding:4px;text-align:center;font-size:7.5px;border-bottom:1px solid #eee;">3<br><span style="font-size:4px;color:#999;">DEF</span></div>
+                  <div style="padding:4px;text-align:center;font-size:7.5px;border-right:1px solid #eee;border-bottom:1px solid #eee;">4</div>
+                  <div style="padding:4px;text-align:center;font-size:7.5px;border-right:1px solid #eee;border-bottom:1px solid #eee;">5</div>
+                  <div style="padding:4px;text-align:center;font-size:7.5px;border-bottom:1px solid #eee;">6</div>
+                  <div style="padding:4px;text-align:center;font-size:7.5px;border-right:1px solid #eee;">7</div>
+                  <div style="padding:4px;text-align:center;font-size:7.5px;border-right:1px solid #eee;">0</div>
+                  <div style="padding:4px;text-align:center;font-size:7.5px;">⌫</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">2</div>
+        <div class="step-label">Ingresá<br>el monto</div>
+      </div>
+
+      <div class="screen-arrow">→</div>
+
+      <!-- PASO 3: Elegí cuotas -->
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen" style="align-items:stretch;justify-content:flex-start;">
+            <div style="width:100%;height:100%;font-family:-apple-system,sans-serif;display:flex;flex-direction:column;overflow:hidden;background:#fff;font-size:6.5px;">
+              <div style="background:#FFE600;padding:8px 7px 6px;display:flex;align-items:center;gap:4px;">
+                <span>←</span>
+                <span style="font-size:7px;font-weight:700;flex:1;text-align:center;">Préstamo Personal</span>
+                <span>⊙</span>
+              </div>
+              <div style="padding:8px 8px 0;">
+                <div style="font-size:8px;font-weight:700;margin-bottom:1px;">Elegí la cantidad de cuotas</div>
+                <div style="color:#555;margin-bottom:7px;">Estás pidiendo: $&nbsp;1.000 &nbsp;✏️</div>
+                <div style="border:1px solid #eee;border-radius:5px;overflow:hidden;">
+                  <div style="padding:4px 7px;font-size:6px;font-weight:700;border-bottom:1px solid #eee;">Opciones disponibles</div>
+                  <div style="display:flex;justify-content:space-between;padding:4px 7px;border-bottom:1px solid #eee;"><span>⭕ 12 cuotas de</span><span style="font-weight:600;">$ 110<sup>69</sup></span></div>
+                  <div style="display:flex;justify-content:space-between;padding:4px 7px;border-bottom:1px solid #eee;"><span>⭕ 9 cuotas de</span><span style="font-weight:600;">$ 138<sup>74</sup></span></div>
+                  <div style="display:flex;justify-content:space-between;padding:4px 7px;border-bottom:1px solid #eee;"><span>⭕ 6 cuotas de</span><span style="font-weight:600;">$ 195<sup>41</sup></span></div>
+                  <div style="display:flex;justify-content:space-between;padding:4px 7px;border-bottom:1px solid #eee;"><span>⭕ 3 cuotas de</span><span style="font-weight:600;">$ 366<sup>35</sup></span></div>
+                  <div style="display:flex;justify-content:space-between;padding:4px 7px;"><span>⭕ 1 cuota de</span><span style="font-weight:600;">$ 1.050<sup>72</sup></span></div>
+                </div>
+              </div>
+              <div style="margin-top:auto;padding:6px 8px;">
+                <div style="background:#ccc;color:#fff;text-align:center;border-radius:5px;padding:5px;font-size:7px;font-weight:700;">Revisar detalle del préstamo</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">3</div>
+        <div class="step-label">Elegí<br>las cuotas</div>
+      </div>
+
+      <div class="screen-arrow">→</div>
+
+      <!-- PASO 4: Revisá si está todo bien -->
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen" style="align-items:stretch;justify-content:flex-start;">
+            <div style="width:100%;height:100%;font-family:-apple-system,sans-serif;display:flex;flex-direction:column;overflow:hidden;background:#fff;font-size:6.5px;">
+              <div style="background:#FFE600;padding:8px 7px 6px;display:flex;align-items:center;gap:4px;">
+                <span>←</span>
+                <span style="font-size:7px;font-weight:700;flex:1;text-align:center;">Préstamo Personal</span>
+              </div>
+              <div style="padding:7px 7px 0;flex:1;overflow:hidden;">
+                <div style="font-size:8px;font-weight:700;margin-bottom:5px;">Revisá si está todo bien</div>
+                <div style="border:1px solid #eee;border-radius:5px;overflow:hidden;margin-bottom:4px;">
+                  <div style="display:flex;justify-content:space-between;padding:4px 6px;border-bottom:1px solid #eee;"><span style="color:#666;">Recibís</span><span style="font-weight:800;font-size:8px;">$ 1.000</span></div>
+                  <div style="display:flex;justify-content:space-between;padding:4px 6px;border-bottom:1px solid #eee;align-items:center;"><span style="color:#666;">Pagás</span><div style="text-align:right;"><div style="font-weight:600;">12x $ 110<sup>69</sup></div><div style="color:#666;font-size:5.5px;">cuotas fijas</div></div></div>
+                  <div style="display:flex;justify-content:space-between;padding:4px 6px;"><span style="color:#666;">En total devolvés</span><span style="font-weight:600;">$ 1.328<sup>28</sup></span></div>
+                </div>
+                <div style="border:1px solid #eee;border-radius:5px;overflow:hidden;margin-bottom:4px;">
+                  <div style="display:flex;align-items:flex-start;gap:3px;padding:4px 6px;border-bottom:1px solid #eee;"><span>💳</span><span style="color:#333;line-height:1.3;">Lo depositamos en tu cuenta de Mercado Pago.</span></div>
+                  <div style="display:flex;align-items:flex-start;gap:3px;padding:4px 6px;"><span>📅</span><span style="color:#333;line-height:1.3;">La primera cuota vence el <strong>16 de marzo</strong>.</span></div>
+                </div>
+                <div style="margin-bottom:3px;"><div style="display:flex;justify-content:space-between;padding:2px 0;border-bottom:1px solid #f5f5f5;"><span style="color:#666;">Tasa Nominal Anual</span><span>45,00%</span></div><div style="display:flex;justify-content:space-between;padding:2px 0;border-bottom:1px solid #f5f5f5;"><span style="color:#666;">Tasa Efectiva Anual</span><span>55,55%</span></div><div style="display:flex;justify-content:space-between;padding:2px 0;"><span style="font-weight:700;">CFTEA</span><span style="font-weight:700;">70,32%</span></div></div>
+              </div>
+              <div style="padding:5px 7px 6px;">
+                <div style="background:#3483FA;color:#fff;text-align:center;border-radius:5px;padding:5px;font-size:7px;font-weight:700;">Pedir Préstamo Personal</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">4</div>
+        <div class="step-label">Revisá y<br>confirmá</div>
+      </div>
+    </div>
+
+    <div class="insight-box">
+      <div class="insight-title">🔍 Insight UX</div>
+      <strong>El flujo más rápido del estudio</strong> para usuarios activos: si ya tenés cuenta con KYC, el crédito se aprueba y desembolsa en segundos a tu wallet. El scoring usa el historial de transacciones de Mercado Libre → datos propios ricos sin depender de Buró. El dinero nunca sale del ecosistema → desembolso instantáneo.
+    </div>
+
+    <div class="metrics-bar">
+      <div class="metric-cell">
+        <div class="metric-title">Aprobación</div>
+        <div class="metric-val" style="color:#16A34A">Instantánea</div>
+        <div class="metric-sub"><span class="pill pill-green">⚡ Instantáneo</span></div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Desembolso</div>
+        <div class="metric-val">Segundos</div>
+        <div class="metric-sub">Wallet MP → sin banco externo</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Pasos (usuario activo)</div>
+        <div class="metric-val">2–3 pasos</div>
+        <div class="metric-sub">KYC ya completado</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Scoring</div>
+        <div class="metric-val">Comportamiento ML</div>
+        <div class="metric-sub">Transacciones del ecosistema</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Montos</div>
+        <div class="metric-val">Variable</div>
+        <div class="metric-sub">Según historial en ML</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     EUROPA
+══════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">🇪🇺 Europa</div>
+
+  <!-- REVOLUT -->
+  <div class="fintech-block">
+    <div class="block-header">
+      <div class="block-header-left">
+        <div class="company-logo" style="background:#F0F4FF;color:#3B82F6;overflow:hidden;padding:4px;"><img src="https://www.google.com/s2/favicons?domain=revolut.com&sz=64" style="width:100%;height:100%;object-fit:contain;border-radius:6px;" onerror="this.outerHTML='Rv'"></div>
+        <div>
+          <div class="company-name">Revolut</div>
+          <div class="company-sub">UK / Europa · Neobank global · 50M+ usuarios · Licencia bancaria EU</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <span class="region-tag" style="background:#E8F6FF;color:#0EA5E9">🇪🇺 EU</span>
+        <span class="pill pill-green">⚡ Desembolso instantáneo</span>
+        <span style="font-size:11px;color:#888;">📸 Fuente: captura real del simulador</span>
+      </div>
+    </div>
+
+    <div class="screenshots-row">
+
+      <!-- PASO 1: Loan Calculator — pantalla real del simulador -->
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen" style="align-items:stretch;justify-content:flex-start;">
+            <div style="width:100%;height:100%;font-family:-apple-system,sans-serif;display:flex;flex-direction:column;overflow:hidden;background:#fff;font-size:6px;">
+              <div style="padding:10px 8px 4px;display:flex;align-items:center;justify-content:space-between;">
+                <span style="font-size:7px;">✕</span>
+                <span></span>
+              </div>
+              <div style="padding:0 8px;flex:1;overflow:hidden;display:flex;flex-direction:column;">
+                <div style="font-size:9px;font-weight:800;margin-bottom:2px;">Loan calculator</div>
+                <div style="color:#666;font-size:5.5px;margin-bottom:8px;line-height:1.4;">Select amount and duration to get an idea of monthly repayments. You'll get a more personalised offer later.</div>
+                <!-- Loan amount slider -->
+                <div style="background:#f7f8fa;border-radius:6px;padding:6px;margin-bottom:5px;">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+                    <span style="font-weight:600;">Loan amount</span>
+                    <span style="color:#3B7BF8;font-weight:700;">✏ &nbsp;10.000 €</span>
+                  </div>
+                  <div style="position:relative;height:5px;background:#e0e0e0;border-radius:3px;margin-bottom:3px;">
+                    <div style="position:absolute;left:0;top:0;width:18%;height:100%;background:#3B7BF8;border-radius:3px;"></div>
+                    <div style="position:absolute;left:16%;top:50%;transform:translateY(-50%);width:7px;height:7px;background:#3B7BF8;border-radius:50%;"></div>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;color:#999;font-size:5px;"><span>1.000 €</span><span>50.000 €</span></div>
+                </div>
+                <!-- Duration slider -->
+                <div style="background:#f7f8fa;border-radius:6px;padding:6px;margin-bottom:6px;">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+                    <span style="font-weight:600;">Loan duration</span>
+                    <span style="color:#3B7BF8;font-weight:700;">✏ &nbsp;84 mo.</span>
+                  </div>
+                  <div style="position:relative;height:5px;background:#e0e0e0;border-radius:3px;margin-bottom:3px;">
+                    <div style="position:absolute;left:0;top:0;width:87%;height:100%;background:#3B7BF8;border-radius:3px;"></div>
+                    <div style="position:absolute;left:85%;top:50%;transform:translateY(-50%);width:7px;height:7px;background:#3B7BF8;border-radius:50%;"></div>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;color:#999;font-size:5px;"><span>12 months</span><span>96 months</span></div>
+                </div>
+                <!-- Results table -->
+                <div style="border:1px solid #eee;border-radius:5px;overflow:hidden;margin-bottom:5px;">
+                  <div style="display:flex;justify-content:space-between;padding:3px 6px;border-bottom:1px solid #eee;"><span style="color:#888;">Monthly repayment</span><span style="font-weight:600;">€145.20</span></div>
+                  <div style="display:flex;justify-content:space-between;padding:3px 6px;border-bottom:1px solid #eee;"><span style="color:#888;">APR ⓘ</span><span style="font-weight:600;">5.97 %</span></div>
+                  <div style="display:flex;justify-content:space-between;padding:3px 6px;border-bottom:1px solid #eee;"><span style="color:#888;">Annual interest rate</span><span style="font-weight:600;">5.81 %</span></div>
+                  <div style="display:flex;justify-content:space-between;padding:3px 6px;"><span style="color:#888;">Total repayable</span><span style="font-weight:600;">€12,196.39</span></div>
+                </div>
+              </div>
+              <div style="padding:5px 8px 6px;">
+                <div style="background:#3B7BF8;color:#fff;text-align:center;border-radius:20px;padding:5px;font-size:7px;font-weight:700;">Continue to application</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">1</div>
+        <div class="step-label">Loan Calculator<br>+ simulador</div>
+      </div>
+
+      <div class="screen-arrow">→</div>
+
+      <!-- PASO 2: KYC / Solicitud -->
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen" style="align-items:stretch;justify-content:flex-start;">
+            <div style="width:100%;height:100%;font-family:-apple-system,sans-serif;display:flex;flex-direction:column;overflow:hidden;background:#fff;font-size:6px;">
+              <div style="padding:10px 8px 6px;display:flex;align-items:center;gap:4px;">
+                <span>←</span>
+                <span style="font-size:7px;font-weight:700;flex:1;text-align:center;">Personal Loan</span>
+              </div>
+              <div style="padding:0 8px;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:6px;">
+                <div style="font-size:20px;">🪪</div>
+                <div style="font-size:8px;font-weight:700;">Verify your identity</div>
+                <div style="font-size:5.5px;color:#666;line-height:1.4;">Quick ID check with Open Banking data. No paperwork needed.</div>
+                <div style="background:#3B7BF8;color:#fff;border-radius:20px;padding:5px 12px;font-size:6.5px;font-weight:700;margin-top:4px;">Start verification</div>
+              </div>
+              <div style="padding:6px 8px;background:#f7f8fa;border-top:1px solid #eee;">
+                <div style="font-size:5.5px;color:#888;text-align:center;">🔒 Powered by Open Banking</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">2</div>
+        <div class="step-label">Verificación<br>KYC / Open Banking</div>
+      </div>
+
+      <div class="screen-arrow">→</div>
+
+      <!-- PASO 3: Aprobación y firma -->
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen" style="align-items:stretch;justify-content:flex-start;">
+            <div style="width:100%;height:100%;font-family:-apple-system,sans-serif;display:flex;flex-direction:column;overflow:hidden;background:#fff;font-size:6px;">
+              <div style="padding:10px 8px 6px;">
+                <span>←</span>
+              </div>
+              <div style="padding:0 8px;flex:1;display:flex;flex-direction:column;gap:5px;">
+                <div style="font-size:8.5px;font-weight:800;">Your loan offer</div>
+                <div style="background:#f7f8fa;border-radius:6px;padding:6px;">
+                  <div style="text-align:center;margin-bottom:4px;"><span style="font-size:14px;font-weight:800;">€10,000</span></div>
+                  <div style="display:flex;justify-content:space-between;font-size:5.5px;margin-bottom:2px;"><span style="color:#888;">Monthly payment</span><span style="font-weight:600;">€145.20</span></div>
+                  <div style="display:flex;justify-content:space-between;font-size:5.5px;margin-bottom:2px;"><span style="color:#888;">Duration</span><span style="font-weight:600;">84 months</span></div>
+                  <div style="display:flex;justify-content:space-between;font-size:5.5px;"><span style="color:#888;">APR</span><span style="font-weight:600;">5.97%</span></div>
+                </div>
+                <div style="display:flex;align-items:center;gap:3px;background:#EBF5FF;border-radius:5px;padding:5px;">
+                  <span style="color:#3B7BF8;">✓</span>
+                  <span style="font-size:5.5px;color:#1D4ED8;">Funds available instantly in your Revolut account</span>
+                </div>
+                <div style="font-size:5.5px;color:#888;line-height:1.4;">By tapping "Accept offer" you agree to the loan agreement and repayment schedule.</div>
+              </div>
+              <div style="padding:5px 8px 8px;">
+                <div style="background:#3B7BF8;color:#fff;text-align:center;border-radius:20px;padding:5px;font-size:7px;font-weight:700;">Accept offer</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">3</div>
+        <div class="step-label">Oferta y<br>firma digital</div>
+      </div>
+
+      <div class="screen-arrow">→</div>
+
+      <!-- PASO 4: Desembolso instantáneo -->
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen" style="align-items:stretch;justify-content:flex-start;">
+            <div style="width:100%;height:100%;font-family:-apple-system,sans-serif;display:flex;flex-direction:column;overflow:hidden;background:#fff;font-size:6px;">
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px;text-align:center;gap:5px;">
+                <div style="width:30px;height:30px;background:#EBF5FF;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;">✅</div>
+                <div style="font-size:9px;font-weight:800;">Loan approved!</div>
+                <div style="font-size:5.5px;color:#666;line-height:1.4;">Your funds have been sent to your Revolut account.</div>
+                <div style="background:#f7f8fa;border-radius:6px;padding:6px;width:100%;margin-top:2px;">
+                  <div style="font-size:5.5px;color:#888;margin-bottom:2px;">Deposited</div>
+                  <div style="font-size:14px;font-weight:800;color:#3B7BF8;">+€10,000</div>
+                  <div style="display:flex;align-items:center;justify-content:center;gap:2px;margin-top:2px;"><span style="color:#16A34A;font-size:7px;">⚡</span><span style="font-size:5.5px;color:#16A34A;">Instant</span></div>
+                </div>
+              </div>
+              <div style="padding:5px 8px 8px;">
+                <div style="background:#3B7BF8;color:#fff;text-align:center;border-radius:20px;padding:5px;font-size:7px;font-weight:700;">View account</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">4</div>
+        <div class="step-label">Fondos<br>instantáneos ⚡</div>
+      </div>
+    </div>
+
+    <div class="insight-box">
+      <div class="insight-title">🔍 Insight UX</div>
+      Revolut tiene el <strong>flujo más compacto del estudio</strong>: todo en una pantalla con simulador integrado (monto + plazo + cuota simultáneos). Habla a una audiencia financieramente educada que prefiere ver todos los datos a la vez. Desembolso a cuenta Revolut → instantáneo. Para usuarios existentes es prácticamente <strong>"one-tap lending"</strong>.
+    </div>
+
+    <div class="metrics-bar">
+      <div class="metric-cell">
+        <div class="metric-title">Aprobación</div>
+        <div class="metric-val" style="color:#16A34A">Minutos</div>
+        <div class="metric-sub"><span class="pill pill-green">⚡ Instantáneo</span></div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Desembolso</div>
+        <div class="metric-val">Instantáneo</div>
+        <div class="metric-sub">Cuenta Revolut → segundos</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Pasos (usuario existente)</div>
+        <div class="metric-val">2–3 pasos</div>
+        <div class="metric-sub">Pantalla única con simulador</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Scoring</div>
+        <div class="metric-val">Open Banking + datos Rv</div>
+        <div class="metric-sub">Comportamiento in-app</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Montos</div>
+        <div class="metric-val">€1K–€50K</div>
+        <div class="metric-sub">Según país y perfil</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CREDITEA CERRADA -->
+  <div class="fintech-block">
+    <div class="block-header">
+      <div class="block-header-left">
+        <div class="company-logo" style="background:#FEF3C7;color:#D97706;overflow:hidden;padding:4px;"><img src="https://www.google.com/s2/favicons?domain=creditea.com&sz=64" style="width:100%;height:100%;object-fit:contain;border-radius:6px;" onerror="this.outerHTML='Cr'"></div>
+        <div>
+          <div class="company-name">Creditea España</div>
+          <div class="company-sub">Crédito al consumo online · Línea revolving</div>
+        </div>
+      </div>
+      <span class="region-tag" style="background:#FEF3C7;color:#D97706">⚠️ Cerrada en España</span>
+    </div>
+    <div class="closed-notice">
+      <span style="font-size:20px">⚠️</span>
+      <div>
+        <strong>Creditea dejó de operar en España en 2025.</strong> La URL oficial muestra: <em>"Gracias por su interés en Creditea, pero hemos dejado de operar en España"</em>. Este player ya no es un competidor activo en el mercado europeo. Su modelo era interesante como referencia de Open Banking (PSD2) para verificación de ingresos, pero no está disponible para análisis actual. <strong>Reemplazar con Younited Credit o Cofidis para el benchmark EU.</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     USA
+══════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">🇺🇸 USA</div>
+
+  <!-- SOFI -->
+  <div class="fintech-block">
+    <div class="block-header">
+      <div class="block-header-left">
+        <div class="company-logo" style="background:#ECFDF5;color:#059669;overflow:hidden;padding:4px;"><img src="https://www.google.com/s2/favicons?domain=sofi.com&sz=64" style="width:100%;height:100%;object-fit:contain;border-radius:6px;" onerror="this.outerHTML='So'"></div>
+        <div>
+          <div class="company-name">SoFi</div>
+          <div class="company-sub">Digital bank · Préstamos personales hasta $100K USD · Licencia bancaria (2022)</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <span class="region-tag" style="background:#E8FFF6;color:#10B981">🇺🇸 USA</span>
+        <span class="pill pill-red">🐢 Aprobación 1–2 días</span>
+        <span style="font-size:11px;color:#888;">🎨 Mockup recreado (web bloqueada)</span>
+      </div>
+    </div>
+
+    <div class="screenshots-row">
+      <!-- Pre-qualify -->
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="css-mockup" style="background:#fff;">
+              <div class="mockup-bar" style="background:#F0FFF8;">
+                <span style="color:#059669;font-weight:800;font-size:10px">SoFi</span>
+              </div>
+              <div class="mockup-body">
+                <div class="mockup-title" style="font-size:11px">Personal Loans</div>
+                <div style="font-size:8px;color:#888;margin-bottom:8px">Check your rate in minutes</div>
+                <div class="mockup-field">
+                  <div class="mockup-label">Loan amount</div>
+                  <div style="font-size:11px;font-weight:700">$10,000</div>
+                </div>
+                <div class="mockup-field">
+                  <div class="mockup-label">Loan purpose</div>
+                  <div style="font-size:9px;color:#666">Debt consolidation ▾</div>
+                </div>
+                <div style="background:#F0FFF8;border-radius:6px;padding:5px 7px;margin-bottom:6px;font-size:8px;color:#059669">
+                  ✓ Checking rate won't affect your credit score
+                </div>
+                <div class="mockup-btn" style="background:#059669">Check Your Rate</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">1</div>
+        <div class="step-label">Pre-qualify<br>(soft check)</div>
+      </div>
+
+      <div class="screen-arrow">→</div>
+
+      <!-- Upload docs -->
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="css-mockup" style="background:#fff;">
+              <div class="mockup-bar" style="background:#F5F5F5;">
+                <span class="mockup-back">←</span>
+                <span style="font-size:9px;font-weight:700">Verify income</span>
+              </div>
+              <div class="mockup-body">
+                <div style="font-size:9px;color:#444;margin-bottom:8px">Upload documents to verify your income</div>
+                <div style="border:1.5px dashed #CCC;border-radius:8px;padding:12px;text-align:center;margin-bottom:6px">
+                  <div style="font-size:16px;margin-bottom:4px">📄</div>
+                  <div style="font-size:8px;color:#888">Pay stub (last 2)</div>
+                  <div style="font-size:7px;color:#059669;margin-top:3px">+ Upload file</div>
+                </div>
+                <div style="border:1.5px dashed #CCC;border-radius:8px;padding:10px;text-align:center">
+                  <div style="font-size:14px;margin-bottom:3px">🏦</div>
+                  <div style="font-size:8px;color:#888">Bank statement</div>
+                  <div style="font-size:7px;color:#059669;margin-top:2px">+ Upload file</div>
+                </div>
+                <div style="background:#FFF3CD;border-radius:5px;padding:5px;margin-top:6px;font-size:7px;color:#856404">
+                  ⚠️ Mayor punto de fricción del flujo
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">2</div>
+        <div class="step-label">Upload manual<br>de pay stubs ⚠️</div>
+      </div>
+
+      <div class="screen-arrow">→</div>
+
+      <!-- Oferta -->
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="css-mockup" style="background:#fff;">
+              <div class="mockup-bar" style="background:#F0FFF8;">
+                <span style="color:#059669;font-weight:800;font-size:10px">SoFi</span>
+              </div>
+              <div class="mockup-body">
+                <div class="mockup-title" style="font-size:10px">Your offer</div>
+                <div style="background:#F0FFF8;border-radius:8px;padding:8px;margin-bottom:6px">
+                  <div class="mockup-row">
+                    <span class="mockup-small">Amount</span>
+                    <span style="font-weight:700;font-size:11px">$10,000</span>
+                  </div>
+                  <div class="mockup-row">
+                    <span class="mockup-small">APR</span>
+                    <span style="font-weight:700;font-size:11px;color:#059669">11.99%</span>
+                  </div>
+                  <div class="mockup-row">
+                    <span class="mockup-small">Monthly</span>
+                    <span style="font-weight:700;font-size:11px">$222/mo</span>
+                  </div>
+                  <div class="mockup-row">
+                    <span class="mockup-small">Term</span>
+                    <span style="font-size:9px">48 months</span>
+                  </div>
+                </div>
+                <div class="mockup-btn" style="background:#059669">Accept Offer</div>
+                <div style="text-align:center;font-size:7px;color:#999;margin-top:4px">Funds in 1–3 business days</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">3</div>
+        <div class="step-label">Oferta con APR<br>transparente</div>
+      </div>
+
+      <div class="screen-arrow">→</div>
+
+      <!-- ACH desembolso -->
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="css-mockup" style="background:#fff;">
+              <div class="mockup-bar" style="background:#F5F5F5;"></div>
+              <div class="mockup-body" style="text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%">
+                <div style="font-size:24px;margin-bottom:6px">🏦</div>
+                <div style="font-weight:700;font-size:10px;margin-bottom:3px">Funds on the way</div>
+                <div style="font-size:8px;color:#888;margin-bottom:8px">ACH transfer initiated</div>
+                <div style="background:#F5F5F5;border-radius:8px;padding:8px;width:100%">
+                  <div style="font-size:8px;color:#888">Expected arrival</div>
+                  <div style="font-size:10px;font-weight:700">1–3 business days</div>
+                </div>
+                <div style="margin-top:8px;background:#FFF3CD;border-radius:6px;padding:5px;font-size:7px;color:#856404">
+                  ⚠️ Más lento que LATAM/EU
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">4</div>
+        <div class="step-label">ACH transfer<br>1–3 días hábiles</div>
+      </div>
+    </div>
+
+    <div class="insight-box">
+      <div class="insight-title">🔍 Insight UX</div>
+      SoFi destaca por sus <strong>montos más altos del estudio</strong> (hasta $100K USD) y transparencia de APR. Sin embargo, el upload manual de pay stubs es el mayor punto de fricción de todo el benchmark. A diferencia de Revolut/MP, no tiene wallet propio → depende de ACH bancario (1–3 días). Su ventaja está en el segmento de mayor monto, no en velocidad.
+    </div>
+
+    <div class="metrics-bar">
+      <div class="metric-cell">
+        <div class="metric-title">Aprobación</div>
+        <div class="metric-val" style="color:#DC2626">1–2 días</div>
+        <div class="metric-sub"><span class="pill pill-red">🐢 Estándar</span></div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Desembolso</div>
+        <div class="metric-val">1–3 días</div>
+        <div class="metric-sub">ACH a cuenta bancaria</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Fricción principal</div>
+        <div class="metric-val">Upload docs</div>
+        <div class="metric-sub">Pay stubs manuales</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Diferencial</div>
+        <div class="metric-val">Hasta $100K</div>
+        <div class="metric-sub">Mayor monto del estudio</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Pre-qualify</div>
+        <div class="metric-val">Soft check ✅</div>
+        <div class="metric-sub">Sin impacto en score</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UPGRADE -->
+  <div class="fintech-block">
+    <div class="block-header">
+      <div class="block-header-left">
+        <div class="company-logo" style="background:#F0FDF4;color:#16A34A;overflow:hidden;padding:4px;"><img src="https://www.google.com/s2/favicons?domain=upgrade.com&sz=64" style="width:100%;height:100%;object-fit:contain;border-radius:6px;" onerror="this.outerHTML='Up'"></div>
+        <div>
+          <div class="company-name">Upgrade</div>
+          <div class="company-sub">Digital lending · Préstamo personal + tarjeta híbrida · Fair credit</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <span class="region-tag" style="background:#E8FFF6;color:#10B981">🇺🇸 USA</span>
+        <span class="pill pill-yellow">🚀 Aprobación en minutos</span>
+        <span style="font-size:11px;color:#888;">📸 Fuente: upgrade.com + 🎨 mockup</span>
+      </div>
+    </div>
+
+    <div class="screenshots-row">
+      <!-- Paso 1: Check rate form (real website) -->
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="css-mockup" style="background:#F8FAF7;">
+              <div class="mockup-bar" style="background:#2F6B32;">
+                <span style="color:white;font-weight:800;font-size:10px">upgrade</span>
+              </div>
+              <div class="mockup-body">
+                <div style="font-size:8px;color:#555;font-weight:600;margin-bottom:6px">PERSONAL LOANS</div>
+                <div class="mockup-title" style="font-size:10px;line-height:1.3">Get up to $50,000 with a low, fixed rate</div>
+                <div style="margin:6px 0;">
+                  <div class="mockup-label">Loan Amount ($1,000 to $50,000)</div>
+                  <div class="mockup-field" style="padding:6px 8px;">
+                    <span style="color:#888;font-size:10px">$</span>
+                    <span style="font-weight:700;font-size:11px">15,000</span>
+                  </div>
+                </div>
+                <div style="margin-bottom:6px;">
+                  <div class="mockup-label">Loan Purpose</div>
+                  <div class="mockup-field" style="padding:6px 8px;font-size:9px;color:#555">
+                    Debt consolidation ▾
+                  </div>
+                </div>
+                <div class="mockup-btn" style="background:#2F6B32">Check Your Rate</div>
+                <div style="text-align:center;font-size:7px;color:#888;margin-top:4px">✓ Won't affect credit score</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">1</div>
+        <div class="step-label">Check rate<br>(sin impacto)</div>
+      </div>
+
+      <div class="screen-arrow">→</div>
+
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="css-mockup" style="background:#fff;">
+              <div class="mockup-bar" style="background:#F5F5F5;">
+                <span class="mockup-back">←</span>
+                <span style="font-size:9px;font-weight:700">Verify identity</span>
+              </div>
+              <div class="mockup-body">
+                <div class="mockup-field">
+                  <div class="mockup-label">Full name</div>
+                  <div style="font-size:10px;font-weight:600">John Smith</div>
+                </div>
+                <div class="mockup-field">
+                  <div class="mockup-label">Date of birth</div>
+                  <div style="font-size:10px">01/15/1988</div>
+                </div>
+                <div class="mockup-field">
+                  <div class="mockup-label">Annual income</div>
+                  <div style="font-size:10px;font-weight:600">$75,000</div>
+                </div>
+                <div style="background:#F0FDF4;border-radius:6px;padding:5px;font-size:8px;color:#16A34A;margin-bottom:5px">
+                  ✓ Connected via Plaid (digital)
+                </div>
+                <div class="mockup-btn" style="background:#2F6B32">Continue</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">2</div>
+        <div class="step-label">Verificación<br>digital (Plaid)</div>
+      </div>
+
+      <div class="screen-arrow">→</div>
+
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="css-mockup" style="background:#fff;">
+              <div class="mockup-bar" style="background:#F0FDF4;"></div>
+              <div class="mockup-body" style="text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%">
+                <div style="font-size:24px;margin-bottom:6px">✅</div>
+                <div style="font-weight:800;font-size:11px;color:#16A34A;margin-bottom:2px">You're approved!</div>
+                <div style="font-size:8px;color:#888;margin-bottom:8px">Decision in minutes</div>
+                <div style="background:#F0FDF4;border-radius:8px;padding:8px;width:100%">
+                  <div class="mockup-row">
+                    <span class="mockup-small">Amount</span>
+                    <span style="font-weight:700;font-size:11px">$15,000</span>
+                  </div>
+                  <div class="mockup-row">
+                    <span class="mockup-small">APR</span>
+                    <span style="font-weight:700;color:#16A34A">14.99%</span>
+                  </div>
+                  <div class="mockup-row">
+                    <span class="mockup-small">Monthly</span>
+                    <span style="font-weight:700">$356/mo</span>
+                  </div>
+                </div>
+                <div class="mockup-btn" style="background:#2F6B32;width:100%;margin-top:8px">Accept</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">3</div>
+        <div class="step-label">Aprobación<br>en minutos</div>
+      </div>
+
+      <div class="screen-arrow">→</div>
+
+      <div class="screen-item">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="css-mockup" style="background:#fff;">
+              <div class="mockup-bar" style="background:#F5F5F5;"></div>
+              <div class="mockup-body" style="text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%">
+                <div style="font-size:22px;margin-bottom:6px">🏦</div>
+                <div style="font-weight:700;font-size:10px;margin-bottom:3px">Funds sent!</div>
+                <div style="font-size:8px;color:#888;margin-bottom:8px">ACH transfer</div>
+                <div style="background:#F5F5F5;border-radius:8px;padding:8px;width:100%">
+                  <div style="font-size:8px;color:#888">Arrives</div>
+                  <div style="font-size:11px;font-weight:700">Next business day</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-num">4</div>
+        <div class="step-label">Fondos en<br>1 día hábil</div>
+      </div>
+    </div>
+
+    <div class="insight-box">
+      <div class="insight-title">🔍 Insight UX</div>
+      Upgrade es el <strong>benchmark de USA más comparable a fintechs ágiles</strong>: aprobación en minutos y verificación de ingresos digital via Plaid (sin upload manual). Su producto híbrido préstamo + tarjeta es un diferencial. El desembolso ACH (1 día) es más lento que LATAM/EU pero mejor que SoFi. Destaca en el segmento "fair credit" (usuarios con score medio).
+    </div>
+
+    <div class="metrics-bar">
+      <div class="metric-cell">
+        <div class="metric-title">Aprobación</div>
+        <div class="metric-val" style="color:#F59E0B">Minutos</div>
+        <div class="metric-sub"><span class="pill pill-yellow">🚀 Rápido</span></div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Desembolso</div>
+        <div class="metric-val">1 día hábil</div>
+        <div class="metric-sub">ACH a cuenta bancaria</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Verificación ingresos</div>
+        <div class="metric-val">Plaid (digital)</div>
+        <div class="metric-sub">Sin upload manual</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Diferencial</div>
+        <div class="metric-val">Préstamo + tarjeta</div>
+        <div class="metric-sub">Producto híbrido único</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-title">Montos</div>
+        <div class="metric-val">$1K–$50K</div>
+        <div class="metric-sub">USD · fair credit friendly</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── HALLAZGOS VISUALES ── -->
+<div class="section">
+  <div class="section-label">💡 Hallazgos clave del análisis visual</div>
+  <div class="findings-row">
+    <div class="finding-card">
+      <div class="finding-icon">🎨</div>
+      <div class="finding-title">El diseño emocional gana en LATAM</div>
+      <div class="finding-body">Nu y Mercado Pago usan colores vibrantes y lenguaje simple. Kueski prioriza claridad del monto sobre todo. En contraste, SoFi y Upgrade son más "corporativos". El usuario LATAM responde mejor a interfaces cálidas y directas.</div>
+    </div>
+    <div class="finding-card">
+      <div class="finding-icon">📱</div>
+      <div class="finding-title">Una pantalla vs. multi-step</div>
+      <div class="finding-body">Revolut concentra todo en una pantalla (monto + plazo + cuota). Los demás usan multi-step. La pantalla única funciona cuando la audiencia es financieramente educada. El multi-step funciona mejor para reducir ansiedad en usuarios menos familiarizados con crédito.</div>
+    </div>
+    <div class="finding-card">
+      <div class="finding-icon">⚡</div>
+      <div class="finding-title">Wallet propio = desembolso instantáneo</div>
+      <div class="finding-body">MP y Revolut logran segundos de desembolso porque el dinero se queda en su ecosistema. Sin wallet propio, cualquier app depende de redes bancarias externas (SPEI: minutos; ACH: días). Esta es la única forma de lograr desembolso verdaderamente instantáneo.</div>
+    </div>
+    <div class="finding-card">
+      <div class="finding-icon">⚠️</div>
+      <div class="finding-title">Creditea cerró en España</div>
+      <div class="finding-body">Creditea dejó de operar en España en 2025. Reemplazar en el benchmark por <strong>Younited Credit</strong> (FR/ES/IT) o <strong>Cofidis</strong>. Ambos usan Open Banking PSD2 para verificación de ingresos y tienen productos de crédito personal relevantes en Europa.</div>
+    </div>
+    <div class="finding-card">
+      <div class="finding-icon">📄</div>
+      <div class="finding-title">La verificación de ingresos es el cuello de botella</div>
+      <div class="finding-body">SoFi: upload manual (mayor fricción). Upgrade: Plaid digital (mejor). Creditea: Open Banking PSD2 (ideal en EU). LATAM: datos del ecosistema propio (mejor de todo). La eliminación de este paso es la mayor palanca de conversión en cualquier flujo de originación.</div>
+    </div>
+    <div class="finding-card">
+      <div class="finding-icon">🔄</div>
+      <div class="finding-title">Pre-qualify sin impacto: estándar en USA</div>
+      <div class="finding-body">SoFi y Upgrade tienen soft credit check antes del hard pull. Esto elimina la fricción psicológica del tope de funnel. En LATAM y EU esto no es necesario porque los modelos alternativos de scoring no requieren hard pull hasta la decisión final.</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  📱 Screenshots Benchmark · Originación Crédito Personal · Equipo Producto & Diseño · Marzo 2026<br>
+  Imágenes: Google Play Store (play-lh.googleusercontent.com) · Sitios web oficiales de cada fintech · Mockups CSS recreados para referencia.<br>
+  <em>Creditea cerró operaciones en España 2025. Revolut y SoFi: sitios web con restricciones de acceso regional.</em>
+</div>
+
+</body>
+</html>
